@@ -1,0 +1,97 @@
+{
+    "stake_currency": "USDT",
+    "stake_amount": "unlimited",
+    "max_open_trades": 3,
+    "tradable_balance_ratio": 0.99,
+    "fiat_display_currency": "USD",
+    "trading_mode": "futures",
+    "margin_mode": "isolated",
+    "dry_run": true,
+    "dry_run_wallet": 5000,
+    "ignore_buying_expired_candle_after": 600,
+    "timeframe": "1m",
+    "unfilledtimeout": {
+        "entry": 5,
+        "exit": 5
+    },
+    "entry_pricing": {
+        "price_side": "ask",
+        "ask_last_balance": 1.0,
+        "use_order_book": true,
+        "order_book_top": 1,
+        "check_depth_of_market": {
+            "enabled": false,
+            "bids_to_ask_delta": 1
+        }
+    },
+    "exit_pricing": {
+        "price_side": "bid",
+        "use_order_book": true,
+        "order_book_top": 1,
+        "order_book_max": 1
+    },
+    "exchange": {
+        "name": "bybit",
+        "pair_whitelist": [
+             "BTC/USDT:USDT",
+             "ETH/USDT:USDT",
+             "LTC/USDT:USDT",
+
+             "BTC/USDT",
+             "LTC/USDT",
+             "ETH/USDT"
+        ],
+        "pair_blacklist": []
+    },
+    "pairlists": [{
+        "method": "StaticPairList"
+    }],
+    "telegram": {
+        "enabled": true,
+        "notification_settings": {
+        "status": "on",
+        "warning": "on",
+        "startup": "on",
+        "entry": "on",
+        "exit": {
+            "roi": "on",
+            "emergency_exit": "on",
+            "force_exit": "on",
+            "exit_signal": "on",
+            "trailing_stop_loss": "on",
+            "stop_loss": "on",
+            "stoploss_on_exchange": "on",
+            "custom_exit": "on"
+        },
+        "entry_cancel": "on",
+        "exit_cancel": "on",
+        "entry_fill": "on",
+        "exit_fill": "on",
+        "protection_trigger": "on",
+        "protection_trigger_global": "on"
+        }
+    },
+    "api_server": {
+        "enabled": true,
+        "listen_ip_address": "0.0.0.0",
+        "listen_port": 8080,
+        "verbosity": "error",
+        "enable_openapi": false
+    },
+    "initial_state": "running",
+    "force_entry_enable": true,
+    "internals": {
+        "process_throttle_secs": 5,
+        "heartbeat_interval": 60
+    },
+    "enable_protections": true,
+    "strategy": "OrderBookStrategy01",
+    "tickerdax":{
+      "routes": {
+          "order-book/predictions/v1/50": ["BTC", "ETH", "LTC"]
+      },
+      "start": "2022-12-01T00:00:00",
+      "timeframe": "1h",
+      "fill_to_now": true
+    }
+}
